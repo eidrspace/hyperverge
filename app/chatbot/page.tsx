@@ -5,29 +5,38 @@ export default function ChatbotPage() {
   const [lang, setLang] = useState<"en" | "ta" | null>(null);
   const [messages, setMessages] = useState<string[]>([]);
   const [input, setInput] = useState("");
+  const [isBotTyping, setIsBotTyping] = useState(false);
 
+  // Play audio + set language
   function playAndSetLanguage(language: "en" | "ta") {
     const audio = new Audio(language === "en" ? "/english.mp3" : "/tamil.mp3");
     audio.play();
-    setTimeout(() => setLang(language), 1000); // wait 1s for audio to finish
+    setTimeout(() => setLang(language), 1000); // wait 1s for audio
   }
 
+  // Send message
   function sendMessage(text: string) {
     if (!text) return;
     const userMsg = (lang === "ta" ? "👤 நீங்கள்: " : "👤 You: ") + text;
 
-    let botMsg = "🤖 HVLoan: ";
-    if (lang === "ta") {
-      botMsg += "உங்கள் வருமானம் மற்றும் செலவுகளை வைத்து கடன் தகுதி பார்க்கலாம்.";
-    } else {
-      botMsg += "We can check your loan eligibility based on your income and expenses.";
-    }
-
-    setMessages((prev) => [...prev, userMsg, botMsg]);
+    setMessages((prev) => [...prev, userMsg]);
     setInput("");
+    setIsBotTyping(true);
+
+    setTimeout(() => {
+      let botMsg = "🤖 HVLoan: ";
+      if (lang === "ta") {
+        botMsg += "உங்கள் வருமானம் மற்றும் செலவுகளை வைத்து கடன் தகுதி பார்க்கலாம்.";
+      } else {
+        botMsg += "We can check your loan eligibility based on your income and expenses.";
+      }
+
+      setMessages((prev) => [...prev, botMsg]);
+      setIsBotTyping(false);
+    }, 1200); // typing delay
   }
 
-  // 👇 Auto welcome message when language is selected
+  // Auto welcome message when language is selected
   useEffect(() => {
     if (lang) {
       const welcomeMsg =
@@ -36,10 +45,11 @@ export default function ChatbotPage() {
           : "🤖 HVLoan: Hello, how can I help you!";
       setTimeout(() => {
         setMessages([welcomeMsg]);
-      }, 1200); // appears after greeting audio
+      }, 1200);
     }
   }, [lang]);
 
+  // Language selection screen
   if (!lang) {
     return (
       <main className="flex flex-col min-h-screen items-center justify-center bg-gray-50 text-gray-900 p-6">
@@ -62,19 +72,39 @@ export default function ChatbotPage() {
     );
   }
 
-  // Normal chatbot view after language chosen
+  // Chatbot view after language chosen
   return (
     <main className="flex flex-col min-h-screen items-center p-6 bg-gray-50 text-gray-900">
       <h1 className="text-2xl font-bold text-indigo-700 mb-4">
         {lang === "ta" ? "💬 HVLoan உதவியாளர்" : "💬 HVLoan Assistant"}
       </h1>
 
-      <div className="border w-full max-w-md p-4 h-72 overflow-y-auto mb-4 bg-white rounded shadow">
+      {/* Chat window */}
+      <div className="border w-full max-w-md p-4 h-72 overflow-y-auto mb-4 bg-white rounded-2xl shadow-lg">
         {messages.map((m, i) => (
-          <p key={i} className="text-sm mb-1">{m}</p>
+          <p
+            key={i}
+            className={`text-sm mb-2 p-2 rounded-lg ${
+              m.startsWith("👤")
+                ? "bg-indigo-50 text-indigo-800"
+                : "bg-green-50 text-green-800"
+            }`}
+          >
+            {m}
+          </p>
         ))}
+
+        {/* Typing indicator */}
+        {isBotTyping && (
+          <div className="flex space-x-1 mt-2">
+            <span className="typing"></span>
+            <span className="typing"></span>
+            <span className="typing"></span>
+          </div>
+        )}
       </div>
 
+      {/* Input */}
       <div className="flex gap-2 w-full max-w-md">
         <input
           value={input}

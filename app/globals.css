@@ -27,3 +27,18 @@ body {
 .btn {
   @apply block w-full text-center bg-blue-600 text-white py-2 rounded-lg shadow hover:bg-blue-700 transition;
 }
+/* Chatbot typing animation */
+.typing {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4f46e5; /* Indigo color */
+  animation: blink 1s infinite;
+  margin: 0 2px;
+  display: inline-block;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0.2; }
+  50% { opacity: 1; }
+}
