@@ -14,8 +14,6 @@ export default function HomePage() {
       {/* Tagline */}
       <p className="text-lg text-center mb-10 max-w-lg">
         <span className="font-semibold">Simple AI Loan Underwriting</span> – 
-        designed for rural & semi-urban India. 
-        Fast, lightweight, and easy to use.
       </p>
 
       {/* Navigation Links */}
@@ -44,7 +42,7 @@ export default function HomePage() {
 
       {/* Footer */}
       <footer className="mt-10 text-sm text-gray-500 text-center">
-        ⚡ Built lightweight with Next.js for Hyperverge Assignment
+        ⚡ Instant Loan
       </footer>
     </main>
   );
