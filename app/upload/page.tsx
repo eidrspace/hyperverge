@@ -2,7 +2,6 @@
 import { useState, useEffect } from "react";
 
 export default function UploadPage() {
-  const [file, setFile] = useState<File | null>(null);
   const [status, setStatus] = useState("Idle");
 
   useEffect(() => {
@@ -29,7 +28,6 @@ export default function UploadPage() {
   function handleFile(e: React.ChangeEvent<HTMLInputElement>) {
     const f = e.target.files?.[0];
     if (f) {
-      setFile(f);
       if (navigator.onLine) {
         tryUpload();
       } else {
