@@ -52,7 +52,7 @@ export default function ChatbotPage() {
   // Language selection screen
   if (!lang) {
     return (
-      <main className="flex flex-col min-h-screen items-center justify-center bg-gray-50 text-gray-900 p-6">
+      <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-indigo-700 via-indigo-500 to-indigo-300 text-white p-6">
         <h1 className="text-2xl font-bold text-indigo-700 mb-6">🌐 Choose Language</h1>
         <div className="flex flex-col gap-4 w-full max-w-sm">
           <button

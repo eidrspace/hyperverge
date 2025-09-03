@@ -29,8 +29,8 @@ export default function ScoringPage() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen items-center p-6 bg-gray-50 text-gray-900">
-      <h1 className="text-2xl font-bold text-green-700 mb-4">📊 Loan Scoring</h1>
+    <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-indigo-700 via-indigo-500 to-indigo-300 text-black p-6">
+      <h1 className="text-2xl font-bold text-white-700 mb-4">Loan Scoring</h1>
 
       <div className="grid gap-3 w-full max-w-sm bg-white p-4 rounded shadow">
         <input

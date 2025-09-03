@@ -49,8 +49,8 @@ export default function UploadPage() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center p-6 bg-gray-50 text-gray-900">
-      <h1 className="text-2xl font-bold text-orange-600 mb-4">🪪 Upload Documents</h1>
+    <main className="flex flex-col min-h-screen items-center justify-center bg-gradient-to-b from-indigo-700 via-indigo-500 to-indigo-300 text-white p-6">
+      <h1 className="text-2xl font-bold text-white-600 mb-4">🪪 Upload Documents</h1>
 
       {/* Hidden file input */}
       <input
