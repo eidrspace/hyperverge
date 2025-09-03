@@ -21,7 +21,7 @@ export default function ScoringPage() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen items-center p-6 bg-gray-50">
+    <main className="flex flex-col min-h-screen items-center p-6 bg-black text-white">
       <h1 className="text-xl font-bold mb-4">📊 Loan Scoring Demo</h1>
       <div className="grid gap-2 w-full max-w-sm">
         <input
@@ -29,16 +29,18 @@ export default function ScoringPage() {
           placeholder="Monthly Income (₹)"
           value={income}
           onChange={(e) => setIncome(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 text-black"
         />
         <input
           type="number"
           placeholder="Monthly Expenses (₹)"
           value={expenses}
           onChange={(e) => setExpenses(e.target.value)}
-          className="border rounded p-2"
+          className="border rounded p-2 text-black"
         />
-        <button onClick={calculateScore} className="btn">Check Eligibility</button>
+        <button onClick={calculateScore} className="bg-green-600 px-3 py-2 rounded">
+          Check Eligibility
+        </button>
       </div>
       <p className="mt-4 text-lg">{result}</p>
     </main>

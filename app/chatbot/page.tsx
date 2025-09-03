@@ -7,14 +7,17 @@ export default function ChatbotPage() {
 
   function sendMessage() {
     if (!input) return;
-    setMessages([...messages, "You: " + input, "Bot: (Here the LLM reply will appear)"]);
+    const userMsg = "You: " + input;
+    // Mock AI reply
+    const botMsg = "Bot: Based on your query, this is a loan-related response.";
+    setMessages([...messages, userMsg, botMsg]);
     setInput("");
   }
 
   return (
-    <main className="flex flex-col min-h-screen items-center p-6 bg-gray-50">
+    <main className="flex flex-col min-h-screen items-center p-6 bg-black text-white">
       <h1 className="text-xl font-bold mb-4">💬 Loan Assistant Chatbot</h1>
-      <div className="border w-full max-w-sm p-4 h-64 overflow-y-auto mb-4 bg-white rounded shadow">
+      <div className="border w-full max-w-sm p-4 h-64 overflow-y-auto mb-4 bg-gray-900 rounded shadow">
         {messages.map((m, i) => (
           <p key={i} className="text-sm">{m}</p>
         ))}
@@ -23,10 +26,12 @@ export default function ChatbotPage() {
         <input
           value={input}
           onChange={(e) => setInput(e.target.value)}
-          className="flex-1 border rounded p-2"
+          className="flex-1 border rounded p-2 text-black"
           placeholder="Ask about your loan..."
         />
-        <button onClick={sendMessage} className="btn">Send</button>
+        <button onClick={sendMessage} className="bg-blue-600 px-3 py-2 rounded">
+          Send
+        </button>
       </div>
     </main>
   );

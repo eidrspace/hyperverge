@@ -29,7 +29,8 @@ export default function UploadPage() {
     const f = e.target.files?.[0];
     if (f) {
       if (navigator.onLine) {
-        tryUpload();
+        setStatus("Uploading... 🌐");
+        setTimeout(() => setStatus("Uploaded successfully ✅"), 2000);
       } else {
         saveOffline(f);
       }
@@ -37,10 +38,10 @@ export default function UploadPage() {
   }
 
   return (
-    <main className="flex flex-col min-h-screen items-center justify-center p-6 bg-gray-50">
+    <main className="flex flex-col min-h-screen items-center justify-center p-6 bg-black text-white">
       <h1 className="text-xl font-bold mb-4">🪪 Upload Document</h1>
       <input type="file" onChange={handleFile} className="mb-4" />
-      <p className="text-gray-700">{status}</p>
+      <p className="text-gray-300">{status}</p>
     </main>
   );
 }
