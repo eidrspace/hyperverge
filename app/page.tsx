@@ -1,41 +1,51 @@
 "use client";
-import Link from "next/link";
-import Image from "next/image";
 
-export default function Home() {
+import Link from "next/link";
+
+export default function HomePage() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gray-50 text-gray-900 p-6">
+    <main className="flex flex-col min-h-screen items-center justify-center bg-gray-50 text-gray-900 p-6">
       {/* Logo + App Name */}
       <div className="flex items-center gap-3 mb-6">
-        <Image src="/logo.png" alt="HVLoan Logo" width={40} height={40} />
+        <img src="/logo.png" alt="HVLoan Logo" className="w-12 h-12" />
         <h1 className="text-3xl font-bold text-indigo-700">HVLoan</h1>
       </div>
 
-      <p className="text-gray-600 mb-8 text-center">
-        Simple AI Loan Underwriting for Everyone
+      {/* Tagline */}
+      <p className="text-lg text-center mb-10 max-w-lg">
+        <span className="font-semibold">Simple AI Loan Underwriting</span> – 
+        designed for rural & semi-urban India. 
+        Fast, lightweight, and easy to use.
       </p>
 
-      {/* Navigation Buttons */}
-      <div className="grid gap-4 w-full max-w-sm text-center">
+      {/* Navigation Links */}
+      <div className="flex flex-col gap-4 w-full max-w-sm">
         <Link
           href="/chatbot"
-          className="rounded bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-3 text-lg font-medium shadow"
+          className="flex items-center justify-center bg-indigo-600 text-white p-4 rounded-lg shadow hover:bg-indigo-700 transition"
         >
           💬 Loan Assistant Chatbot
         </Link>
+
         <Link
           href="/scoring"
-          className="rounded bg-green-600 hover:bg-green-700 text-white px-4 py-3 text-lg font-medium shadow"
+          className="flex items-center justify-center bg-green-600 text-white p-4 rounded-lg shadow hover:bg-green-700 transition"
         >
           📊 Loan Scoring Demo
         </Link>
+
         <Link
           href="/upload"
-          className="rounded bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-3 text-lg font-medium shadow"
+          className="flex items-center justify-center bg-orange-600 text-white p-4 rounded-lg shadow hover:bg-orange-700 transition"
         >
           🪪 Offline Upload Demo
         </Link>
       </div>
+
+      {/* Footer */}
+      <footer className="mt-10 text-sm text-gray-500 text-center">
+        ⚡ Built lightweight with Next.js for Hyperverge Assignment
+      </footer>
     </main>
   );
 }
